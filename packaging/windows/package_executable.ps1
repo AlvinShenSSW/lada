@@ -155,10 +155,13 @@ function Create-EXE {
 
     .\venv_release_win\Scripts\Activate.ps1
 
-    $release_dir = (Resolve-Path ".\build_gtk_release\gtk\x64\release").Path
-    $env:Path = $release_dir + "\bin;" + $env:Path
-    $env:LIB = $release_dir + "\lib;" + $env:LIB
-    $env:INCLUDE = $release_dir + "\include;" + $release_dir + "\include\cairo;" + $release_dir + "\include\glib-2.0;" + $release_dir + "\include\gobject-introspection-1.0;" + $release_dir + "\lib\glib-2.0\include;" + $env:INCLUDE
+    # GTK build dir only exists when building the GUI (gvsbuild step). CLI-only builds skip it.
+    if (-not $cliOnly) {
+        $release_dir = (Resolve-Path ".\build_gtk_release\gtk\x64\release").Path
+        $env:Path = $release_dir + "\bin;" + $env:Path
+        $env:LIB = $release_dir + "\lib;" + $env:LIB
+        $env:INCLUDE = $release_dir + "\include;" + $release_dir + "\include\cairo;" + $release_dir + "\include\glib-2.0;" + $release_dir + "\include\gobject-introspection-1.0;" + $release_dir + "\lib\glib-2.0\include;" + $env:INCLUDE
+    }
 
     $specArgs = @()
     if ($cliOnly) { $specArgs += '--cli-only' }
