@@ -27,7 +27,7 @@ def _get_version(version: str):
     except Exception:
         return version
 
-VERSION = _get_version('0.11.2-dev')
+VERSION = _get_version('0.11.1')
 
 LOG_LEVEL = os.environ.get("LOG_LEVEL", "WARNING")
 

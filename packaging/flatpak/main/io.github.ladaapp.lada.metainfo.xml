@@ -58,6 +58,14 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release date="2026-06-21" version="0.11.1">
+            <description>
+                <p>Fixes:</p>
+                <ul>
+                    <li>CLI+GUI: Tag HEVC output as hvc1 for all HEVC encoders (libx265, hevc_nvenc, hevc_amf, hevc_qsv, hevc_videotoolbox) in ISOBMFF containers (mp4/mov/m4v) for Apple compatibility (Finder thumbnails, QuickLook, QuickTime, Safari)</li>
+                </ul>
+            </description>
+        </release>
         <release date="2026-02-09" version="0.11.0">
             <description>
                 <p>Breaking change: If you're upgrading from a previous version you now have to install one of Lada's Flatpak Add-On matching your GPU (Nvidia or Intel) as the main Flatpak doesn't contain Nvidia-specific libraries anymore.</p>
